@@ -1,5 +1,7 @@
 /* 
-  This class is used to. 
+  This class is the main class for running the Connect 4 game. It handles the 
+  initialization of the game, player interactions, game rounds, and determining 
+  the winner or if the game ends in a tie.
 
   BUGS--------------------------------------------------------------------------
   - None at the moment
@@ -19,7 +21,8 @@ import java.util.InputMismatchException;
 public class Connect4 {
 
     /**
-     * 
+     * Initializes the game by setting up the board, adding players, and 
+     * starting the round system where players take turns until the game is over.
      * 
      * @param args - the command line arguments (none) 
      */
@@ -44,7 +47,8 @@ public class Connect4 {
     }//main
 
     /**
-     * This method is used to create the game header for the Connect 4 game.
+     * This method creates the game header for the Connect 4 game, displaying
+     * the title and a decorative border.
      */
     public static void gameHeader() {
         System.out.println("_________________________________________________");
@@ -54,9 +58,11 @@ public class Connect4 {
     }//gameHeader
 
     /**
-     * This method is used to add the two players that will play the game.
-     * @param input - a Scanner object
-     * @param listOfPlayers - a Stack object
+     * This method prompts the players to enter their names and adds them to a
+     * stack that keeps track of the players.
+     * 
+     * @param input - a Scanner object to receive player input
+     * @param listOfPlayers - a Stack object containing the players' names
      */
     public static void addPlayers(Scanner input, Stack<String> listOfPlayers) {
 
@@ -69,9 +75,11 @@ public class Connect4 {
     }//addPlayers
 
     /**
-     * This method is used to choose which player starts the game first.
-     * @param listOfPlayers - a Stack object
-     * @param rand - a Random object
+     * This method randomly chooses which player will start the game as Player 1
+     * and assigns the other player as Player 2.
+     * 
+     * @param listOfPlayers - a Stack object containing the players' names
+     * @param rand - a Random object to randomize player order
      */
     public static void chooseOrder(Stack<String> listOfPlayers, Random rand) {
 
@@ -97,14 +105,13 @@ public class Connect4 {
     }//chooseOrder
 
     /**
-     * This method allows input from both players, alternates turns between 
-     * them, and records each player's input until a player wins the game or the 
-     * board is filled.
+     * This method manages the game rounds, allowing players to take turns 
+     * placing their chips until one player wins or the board is full.
      * 
-     * @param connect4Board - a Grid object
-     * @param rand - a Random object
-     * @param listOfPlayers - a Stack object
-     * @param input - a Scanner object
+     * @param connect4Board - a Grid object representing the game board
+     * @param rand - a Random object to randomize player order
+     * @param listOfPlayers - a Stack object containing the players' names
+     * @param input - a Scanner object to receive player input
      */
     public static void roundSystem(Grid connect4Board, Random rand,
             Stack<String> listOfPlayers, Scanner input) {
@@ -117,7 +124,7 @@ public class Connect4 {
         
         boolean isTie = false;
 
-        boolean player1Turn = true; //Value decides for both player's turns 
+        boolean player1Turn = true; //Soley indicates whose turn it is 
         
         char player1Chip = 'R';
         
@@ -201,18 +208,20 @@ public class Connect4 {
         }//while loop
         
         endGame(connect4Board, input, listOfPlayers, rand, player1Turn, isTie);        
-
     }//roundSystem
 
     /**
-     * This method prints out the player that won and calls the
-     * "playAnotherGame" method.
-     * @param connect4Board - a Grid object
-     * @param input - a Scanner object
-     * @param listOfPlayers - a Stack object
-     * @param rand - a Random object
-     * @param player1Turn
-     * @param isTie
+     * This method prints the result of the game, announcing the winner or if 
+     * the game ended in a tie. It then calls the playAnotherGame method
+     * to ask the players if they want to play again.
+     * 
+     * @param connect4Board - a Grid object representing the game board
+     * @param input - a Scanner object to receive player input
+     * @param listOfPlayers - a Stack object containing the players' names
+     * @param rand - a Random object to randomize player order
+     * @param player1Turn - a Boolean indicating whether it was Player 1's turn 
+     * when the game ended
+     * @param isTie - a Boolean indicating whether the game ended in a tie
      */
     public static void endGame(Grid connect4Board, Scanner input, 
             Stack<String> listOfPlayers, Random rand, boolean player1Turn, 
@@ -248,17 +257,18 @@ public class Connect4 {
             System.out.println(); //Creates a blank line
             playAnotherGame(connect4Board, input, listOfPlayers, rand, false);
         }
-        
     }//endGame
     
     /**
-     * This method asks the user if they want to play Connect 4 again.
-     * @param connect4Board - a Grid object
-     * @param input - a Scanner object
-     * @param listOfPlayers - a Stack object
-     * @param rand - a Random object
-     * @param wrongInput - checks if the player has made a wrong input resulting
-     * in a message being displayed more than once.
+     * This method asks the players if they want to play Connect 4 again. 
+     * It handles their response and either restarts the game or ends it.
+     * 
+     * @param connect4Board - a Grid object representing the game board
+     * @param input - a Scanner object to receive player input
+     * @param listOfPlayers - a Stack object containing the players' names
+     * @param rand - a Random object used to randomize player order
+     * @param wrongInput - a Boolean that tracks whether the player made an 
+     * invalid input, resulting in the prompt being displayed again
      */
     public static void playAnotherGame(Grid connect4Board, Scanner input, 
             Stack<String> listOfPlayers, Random rand, boolean wrongInput){
@@ -297,3 +307,4 @@ public class Connect4 {
             }//switch        
     }//playAgain
 }//Connect4
+
