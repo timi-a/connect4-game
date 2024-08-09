@@ -112,7 +112,7 @@ public class Grid {
      * column.
      *
      * @param selectedPoint - the x-coordinate chosen by the player
-     * @param playerChip
+     * @param playerChip - the character representing the player's chip ('R' or 'Y')
      * @return true if the chip was successfully placed, false if the column 
      * is full
      */
@@ -136,7 +136,7 @@ public class Grid {
     /**
      * Checks if a player has won the game by connecting 4 chips horizontally.
      *
-     * @param playerChip
+     * @param playerChip - the character representing the player's chip ('R' or 'Y')
      * @return true if a player has connected 4 horizontally, false otherwise
      */
     public boolean playerWinHori(char playerChip) {
@@ -163,7 +163,7 @@ public class Grid {
     /**
      * Checks if a player has won the game by connecting 4 chips vertically.
      *
-     * @param playerChip
+     * @param playerChip - the character representing the player's chip ('R' or 'Y')
      * @return true if a player has connected 4 vertically, false otherwise
      */
     public boolean playerWinVert(char playerChip) {
@@ -189,7 +189,7 @@ public class Grid {
      * Checks if a player has won the game by connecting 4 chips diagonally from
      * left to right.
      *
-     * @param playerChip
+     * @param playerChip - the character representing the player's chip ('R' or 'Y')
      * @return true if a player has connected 4 diagonally from left to right, 
      * false otherwise
      */
@@ -281,7 +281,7 @@ public class Grid {
      * Checks if a player has won the game by connecting 4 chips in any 
      * direction (horizontal, vertical, or diagonal).
      *
-     * @param playerChip
+     * @param playerChip - the character representing the player's chip ('R' or 'Y')
      * @return true if a player has won, false otherwise
      */
     public boolean playerWin(char playerChip) {
